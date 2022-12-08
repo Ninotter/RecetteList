@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "413161783002",
+    "project_id": "recettelist",
+    "storage_bucket": "recettelist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413161783002:android:bacc698afd9367347cefe3",
+        "android_client_info": {
+          "package_name": "com.nino.recettelist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413161783002-rvqvl9rf6ugp4l6pjtenmbbcve977l6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGjj4nUE5acd8aueraHYuce5dy8FhMe7w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413161783002-rvqvl9rf6ugp4l6pjtenmbbcve977l6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
