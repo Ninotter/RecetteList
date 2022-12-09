@@ -44,11 +44,12 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/LinearLayoutListRecettes"
+        android:id="@+id/RecyclerViewRecettes"
         android:layout_width="match_parent"
         android:layout_height="1000dp"
         android:layout_below="@id/RelativeLayoutSearchBox"
         >
+
 
     </androidx.recyclerview.widget.RecyclerView>
 
