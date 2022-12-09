@@ -1,5 +1,8 @@
 package com.nino.recettelist.model
 
+import com.google.gson.Gson
+import com.nino.recettelist.dataclass.Recipe
+import com.nino.recettelist.dataclass.SearchResult
 import okhttp3.*
 import org.json.JSONArray
 import java.io.IOException
@@ -9,16 +12,18 @@ class ApiCaller(){
     private val client = OkHttpClient()
     private var search :String = "";
 
-    private lateinit var queryResult: JSONArray
-
-    fun run():String? {
+    fun run(): List<Recipe> {
+        //TODO Error handling
         val request: Request = Request.Builder().url(baseRequest + search).build()
-        try {
-            val response: Response = client.newCall(request).execute()
-            val responseString = response.body()?.string()
-            return responseString;
-        }catch (e : Exception){
-            return ""
+        val response: Response = client.newCall(request).execute()
+        val responseString = response.body()?.string()
+        if (responseString == null) {
+            return emptyList()
         }
+
+        var gson = Gson()
+        var result = gson.fromJson(responseString, SearchResult::class.java)
+
+        return result.results;
     }
 }

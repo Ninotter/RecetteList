@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activities.RecetteListActivity">
-
-    <TextView
-        android:id="@+id/txtRecetteTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:textSize="50dp"
-        android:text="Liste des recettes" />
-
-    <LinearLayout
-        android:id="@+id/RelativeLayoutSearchBox"
+<layout>
+    <data>
+        <variable name="viewModel" type="com.nino.recettelist.viewmodels.RecetteListViewModel"/>
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/txtRecetteTitle"
-        >
-        <EditText
-            android:id="@+id/editTxtRecherche"
-            android:hint="Rechercher..."
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
+        android:layout_height="match_parent"
+        tools:context=".ui.activities.RecetteListActivity">
+        <TextView
+            android:id="@+id/txtRecetteTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textSize="50dp"
+            android:text="Liste des recettes" />
 
+        <LinearLayout
+            android:id="@+id/RelativeLayoutSearchBox"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@id/txtRecetteTitle"
             >
-        </EditText>
-        <Button
-            android:id="@+id/btnRecherche"
-            android:text="Rechercher"
-            android:layout_width="125dp"
-            android:padding="2dp"
-            android:layout_height="50dp"
-            android:layout_toRightOf="@id/editTxtRecherche"
-            android:layout_alignBottom="@id/editTxtRecherche"
-            >
-        </Button>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editTxtRecherche"
+                android:hint="Rechercher..."
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+
+                >
+            </EditText>
+            <Button
+                android:id="@+id/btnRecherche"
+                android:text="Rechercher"
+                android:layout_width="125dp"
+                android:padding="2dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/editTxtRecherche"
+                android:layout_alignBottom="@id/editTxtRecherche"
+                >
+            </Button>
+        </LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewRecettes"
-        android:layout_width="match_parent"
-        android:layout_height="1000dp"
-        android:layout_below="@id/RelativeLayoutSearchBox"
-        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecyclerViewRecettes"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:layout_below="@id/RelativeLayoutSearchBox"
+            />
 
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-</RelativeLayout>
+    </RelativeLayout>
+</layout>
