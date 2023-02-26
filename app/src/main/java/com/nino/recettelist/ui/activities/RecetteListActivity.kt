@@ -37,6 +37,8 @@ class RecetteListActivity : AppCompatActivity() {
         val recipeAdapter = RecipeListAdapter(dataRecipe)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
+
+
         recyclerViewRecipe.adapter = recipeAdapter
         recyclerViewRecipe.layoutManager = layoutManager
         recyclerViewRecipe.setHasFixedSize(true)
@@ -63,6 +65,10 @@ class RecetteListActivity : AppCompatActivity() {
     public fun InvokeRefreshBinding(){
         val recyclerViewRecipe = binding.RecyclerViewRecettes
         val adapter = recyclerViewRecipe.adapter
-        adapter!!.notifyDataSetChanged()
+        runOnUiThread(
+            Runnable(){
+                adapter!!.notifyDataSetChanged()
+            }
+        )
     }
 }
