@@ -1,9 +1,11 @@
 package com.nino.recettelist.model
 
+import android.content.Intent
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +13,7 @@ import com.nino.recettelist.R
 import com.nino.recettelist.databinding.RecipeBinding
 import com.nino.recettelist.databinding.RecipeBindingImpl
 import com.nino.recettelist.dataclass.Recipe
+import com.nino.recettelist.ui.activities.RecetteListActivity
 import com.nino.recettelist.viewmodels.RecetteListViewModel
 import com.squareup.picasso.Picasso
 
@@ -35,16 +38,23 @@ class RecipeListAdapter(private val recipeList: List<Recipe>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = listRecipe[position]
         holder.bind(recipe)
+        //loads image from URL, gets resized, and placed into ImageView
         Picasso.get().load(recipe.image).resize(200,200).into(holder.imgRecipe)
+        holder.btnDetail.setOnClickListener({
+            //TODO Navigation page détail
+            //startActivity(Intent(this@RecipeListAdapter, DetailActivity::class.java))
+        })
     }
 
 
 
     class ViewHolder(private val binding: RecipeBinding) : RecyclerView.ViewHolder(binding.root) {
         lateinit var imgRecipe: ImageView
+        lateinit var btnDetail : Button
         fun bind(recipe: Recipe) {
             binding.recipe = recipe
             imgRecipe = binding.root.findViewById<View>(R.id.imageRecipeList) as ImageView
+            btnDetail = binding.root.findViewById<View>(R.id.btnRecipeListDetail) as Button
         }
     }
 }
