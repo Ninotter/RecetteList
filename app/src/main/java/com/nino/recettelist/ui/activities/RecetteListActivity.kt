@@ -1,5 +1,6 @@
 package com.nino.recettelist.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -26,6 +27,11 @@ class RecetteListActivity : AppCompatActivity() {
     var dataRecipe : List<Recipe> = listOf()
     private lateinit var binding: ActivityRecetteListBinding
 
+    fun navigateToDetail(recipeTarget : Recipe){
+        recetteListViewModel.subjectRecipe = recipeTarget
+        startActivity(Intent(this, DetailActivity::class.java))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +41,7 @@ class RecetteListActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_recette_list)
 
         val recyclerViewRecipe = binding.RecyclerViewRecettes
-        val recipeAdapter = RecipeListAdapter(dataRecipe)
+        val recipeAdapter = RecipeListAdapter(dataRecipe, this::navigateToDetail)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
 
