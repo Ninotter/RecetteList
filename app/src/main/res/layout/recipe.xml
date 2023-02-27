@@ -20,5 +20,13 @@
             android:padding="10dp"
             android:layout_toEndOf="@id/imageRecipeList"
             android:text="@{recipe.Title}"/>
+        <Button
+            android:id="@+id/btnRecipeListDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="Détails"
+            />
     </RelativeLayout>
 </layout>
