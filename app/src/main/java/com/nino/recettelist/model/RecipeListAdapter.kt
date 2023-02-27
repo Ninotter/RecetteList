@@ -35,7 +35,7 @@ class RecipeListAdapter(private val recipeList: List<Recipe>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = listRecipe[position]
         holder.bind(recipe)
-        Picasso.get().load(recipe.image).into(holder.imgRecipe)
+        Picasso.get().load(recipe.image).resize(200,200).into(holder.imgRecipe)
     }
 
 
