@@ -15,6 +15,11 @@ import com.nino.recettelist.viewmodels.RecetteListViewModel
 class RecipeListAdapter(private val recipeList: List<Recipe>) : RecyclerView.Adapter<RecipeListAdapter.ViewHolder>()  {
 
     private lateinit var binding: RecipeBinding
+    private var listRecipe : List<Recipe> = recipeList
+
+    public fun updateList(recipes :List<Recipe>){
+        listRecipe = recipes
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = RecipeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,11 +27,11 @@ class RecipeListAdapter(private val recipeList: List<Recipe>) : RecyclerView.Ada
     }
 
     override fun getItemCount(): Int {
-        return recipeList.count()
+        return listRecipe.count()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val recipe = recipeList[position]
+        val recipe = listRecipe[position]
         holder.bind(recipe)
     }
 

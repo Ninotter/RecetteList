@@ -65,6 +65,7 @@ class RecetteListActivity : AppCompatActivity() {
     public fun InvokeRefreshBinding(){
         val recyclerViewRecipe = binding.RecyclerViewRecettes
         val adapter = recyclerViewRecipe.adapter
+        (adapter as RecipeListAdapter).updateList(dataRecipe)
         runOnUiThread(
             Runnable(){
                 adapter!!.notifyDataSetChanged()
