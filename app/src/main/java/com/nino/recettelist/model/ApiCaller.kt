@@ -10,7 +10,7 @@ import java.io.IOException
 class ApiCaller(){
     private val baseRequest :String = "https://api.spoonacular.com/recipes/complexSearch?apiKey=12b7989413044f96b945ee19f5e15dd2&number=30&query="
     private val client = OkHttpClient()
-    private var search :String = "";
+    public var search :String = "";
 
     fun run(): List<Recipe> {
         //TODO Error handling

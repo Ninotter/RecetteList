@@ -4,6 +4,7 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nino.recettelist.R
@@ -11,6 +12,7 @@ import com.nino.recettelist.databinding.RecipeBinding
 import com.nino.recettelist.databinding.RecipeBindingImpl
 import com.nino.recettelist.dataclass.Recipe
 import com.nino.recettelist.viewmodels.RecetteListViewModel
+import com.squareup.picasso.Picasso
 
 class RecipeListAdapter(private val recipeList: List<Recipe>) : RecyclerView.Adapter<RecipeListAdapter.ViewHolder>()  {
 
@@ -33,13 +35,16 @@ class RecipeListAdapter(private val recipeList: List<Recipe>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val recipe = listRecipe[position]
         holder.bind(recipe)
+        Picasso.get().load(recipe.image).into(holder.imgRecipe)
     }
 
 
 
     class ViewHolder(private val binding: RecipeBinding) : RecyclerView.ViewHolder(binding.root) {
+        lateinit var imgRecipe: ImageView
         fun bind(recipe: Recipe) {
             binding.recipe = recipe
+            imgRecipe = binding.root.findViewById<View>(R.id.imageRecipeList) as ImageView
         }
     }
 }

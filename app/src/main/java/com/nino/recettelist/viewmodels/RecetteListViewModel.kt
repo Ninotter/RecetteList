@@ -9,7 +9,8 @@ class RecetteListViewModel: ViewModel(){
     val apiCaller = ApiCaller();
 
 
-    suspend fun search(): List<Recipe>{
-        return apiCaller.run();
+    suspend fun search(input: String): List<Recipe>{
+        apiCaller.search = input
+        return apiCaller.run()
     }
 }

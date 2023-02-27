@@ -3,6 +3,7 @@ package com.nino.recettelist.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -50,13 +51,15 @@ class RecetteListActivity : AppCompatActivity() {
         )
 
         GlobalScope.async{
-            dataRecipe = recetteListViewModel.search();
+            dataRecipe = recetteListViewModel.search("");
             InvokeRefreshBinding()
         }
         val btnRecherche: Button = findViewById(R.id.btnRecherche)
         btnRecherche.setOnClickListener {
             GlobalScope.async {
-                dataRecipe = recetteListViewModel.search()
+                val txtField : EditText = findViewById(R.id.editTxtRecherche)
+                val input: String = txtField.text.toString()
+                dataRecipe = recetteListViewModel.search(input)
                 InvokeRefreshBinding()
             }
         }
