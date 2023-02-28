@@ -1,24 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activities.DetailActivity">
-
-
-    <RelativeLayout
+<layout>
+    <data>
+        <variable name="recipe" type="com.nino.recettelist.dataclass.Recipe"/>
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        tools:context=".ui.activities.DetailActivity">
 
         <TextView
+            android:id="@+id/textViewDetailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="bonjour."
+            android:layout_centerHorizontal="true"
+            android:text="@{recipe.title}"
             />
-
+        <ImageView
+            android:id="@+id/imageViewDetailMain"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/textViewDetailTitle"
+            android:src="@android:color/holo_orange_dark"
+            android:layout_centerHorizontal="true"
+            />
+        <ImageView
+            android:id="@+id/imageDetailIsVegan"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/vegan_icon"
+            android:layout_below="@id/textViewDetailTitle"
+            android:layout_toEndOf="@id/imageViewDetailMain"
+        <!-- android:visibility="@{recipe.vegan == true ? View.visible : View.invisible}" -->
+            />
+        <ImageView
+            android:id="@+id/imageDetailIsVegetarian"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/vegetarian_icon"
+            android:layout_below="@id/textViewDetailTitle"
+            android:layout_toStartOf="@id/imageViewDetailMain"
+            <!-- android:visibility="@{recipe.vegetarian == true ? View.visible : View.invisible}" -->
+            />
+        <Button
+            android:id="@+id/btnDetailSourceUrl"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voir en ligne"
+            android:layout_below="@id/imageViewDetailMain"
+            />
+        <TextView
+            android:id="@+id/textViewDetailDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnDetailSourceUrl"
+            android:text="@{recipe.summary}"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewDetailIngredients"
+            android:layout_below="@id/textViewDetailDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </RelativeLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -28,11 +28,9 @@ class RecetteListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecetteListBinding
 
     fun navigateToDetail(recipeTarget : Recipe){
-        recetteListViewModel.subjectRecipe = recipeTarget
         val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra("recipe_data", recipeTarget)
+        intent.putExtra("recipe_id", recipeTarget.id)
         startActivity(intent)
-        //startActivity(Intent(this, DetailActivity::class.java))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
